@@ -8,8 +8,8 @@ set -e
 
 # install java if needed
 # TODO java8
-{ which java; } || { yum install java -y; }
-
+#{ which java; } || { yum install java -y; }
+{ which java; } || {yum install java-11-openjdk}
 # create app user
 useradd --shell /sbin/nologin --system --user-group fsesearch-app-user
 
