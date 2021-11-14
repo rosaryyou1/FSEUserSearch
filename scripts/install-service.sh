@@ -7,7 +7,7 @@ set -e
 chown fsesearch-app-user:fsesearch-app-user /var/fsesearch-app/FSEUserSearch-0.0.1-SNAPSHOT.jar
 
 # protect application from modifications
-chmod 500 /var/fsesearch-app/FSEUserSearch-0.0.1-SNAPSHOT.jar
+#chmod 500 /var/fsesearch-app/FSEUserSearch-0.0.1-SNAPSHOT.jar
 #chattr +i /var/sample-app/sample-app.jar
 
 # create symlink to init.d

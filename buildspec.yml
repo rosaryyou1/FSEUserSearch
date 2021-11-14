@@ -1,0 +1,21 @@
+version: 0.2
+
+phases:
+#  install:
+ #   runtime-versions:
+  #    java: corretto11
+  build:
+    commands:
+      - echo Build started on `date`
+      -  mvn clean install 
+  post_build:
+    commands:
+      - echo Build completed on `date`
+artifacts:
+  files:
+    - target/FSEUserSearch-0.0.1-SNAPSHOT
+    - appspec.yml
+    - scripts/start-service-1.sh
+    - scripts/stop-service-1.sh
+  #  - scripts/install-service.sh
+  discard-paths: yes
