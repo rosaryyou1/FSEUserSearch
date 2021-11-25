@@ -1,30 +1,30 @@
 version: 0.0
 os: linux
 files:
-  - source: /FSEUserSearch-0.0.1-SNAPSHOT.jar
-    destination: /var/fsesearch-app
+  - source: FSEUserSearch-0.0.1-SNAPSHOT.jar
+    destination: /var/fsesearch-app/FSEUserSearch-0.0.1-SNAPSHOT.jar
 permissions:
   - object: /var/fsesearch-app
     owner: fsesearch-app-user
     group: fsesearch-app-user
 hooks:
   ApplicationStop:
-    - location: stop-service-1.sh
+    - location: scripts/stop-service.sh
       timeout: 60
       runas: root
 #    - location: scripts/backup-previous-deployments.sh
  #     timeout: 60
  #     runas: root
- # BeforeInstall:
-  #  - location: scripts/install-dependencies.sh
-   #   timeout: 180
-    #  runas: root
-  #AfeterInstall:
-   # - location: install-service.sh
-    #  timeout: 60
-     # runas: root
+  BeforeInstall:
+    - location: scripts/install-dependencies.sh
+      timeout: 180
+      runas: root
+  AfeterInstall:
+    - location: scripts/install-service.sh
+      timeout: 60
+      runas: root
   ApplicationStart:
-    - location: start-service-1.sh
+    - location: scripts/start-service.sh
       timeout: 180
       runas: root
   #ValidateService:
