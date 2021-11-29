@@ -56,7 +56,7 @@ class FseUserSearchApplicationTests {
 		
 		try {
 			Mockito.when(userService.findByNameAndAssociateIdAndSkill(
-					Mockito.anyString(), Mockito.anyString())).thenReturn(lstMockUsrJsonModel);
+					Mockito.anyString(), Mockito.anyString(),1)).thenReturn(lstMockUsrJsonModel);
 			RequestBuilder requestBuilder = MockMvcRequestBuilders.get(
 					"/skill-tracker/api/v1/admin/searchName/CTS3574121-Cyril").accept(
 					MediaType.APPLICATION_JSON);
@@ -75,7 +75,7 @@ class FseUserSearchApplicationTests {
 		
 		try {
 			Mockito.when(userService.findByNameAndAssociateIdAndSkill(
-					Mockito.anyString(), Mockito.anyString())).thenReturn(lstMockUsrJsonModel);
+					Mockito.anyString(), Mockito.anyString(),1)).thenReturn(lstMockUsrJsonModel);
 			RequestBuilder requestBuilder = MockMvcRequestBuilders.get(
 					"/skill-tracker/api/v1/admin/searchSkill/Angular").accept(
 					MediaType.APPLICATION_JSON);
@@ -93,7 +93,7 @@ class FseUserSearchApplicationTests {
 		
 		try {
 			Mockito.when(userService.findByNameAndAssociateIdAndSkill(
-					Mockito.anyString(), Mockito.anyString())).thenThrow(new ValidationException("{\"error\":\"Incorrect Skills\"}"));
+					Mockito.anyString(), Mockito.anyString(),1)).thenThrow(new ValidationException("{\"error\":\"Incorrect Skills\"}"));
 			RequestBuilder requestBuilder = MockMvcRequestBuilders.get(
 					"/skill-tracker/api/v1/admin/searchName/CTS3574121-Cyril").accept(
 					MediaType.APPLICATION_JSON);

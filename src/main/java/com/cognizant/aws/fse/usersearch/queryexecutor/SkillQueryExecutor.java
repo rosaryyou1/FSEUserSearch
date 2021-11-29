@@ -21,7 +21,7 @@ public class SkillQueryExecutor implements CriteriaQueryExecutor{
 	}
 
 	@Override
-	public List<UserJsonModel> executeQuery(String criteriaValue,DynamoDB dynamoDB) {
+	public List<UserJsonModel> executeQuery(String criteriaValue,DynamoDB dynamoDB,int pageNo) {
 		String keyExpression = "";
 		String indexName = "";
 		ValueMap valueMap = new ValueMap();
@@ -36,7 +36,7 @@ public class SkillQueryExecutor implements CriteriaQueryExecutor{
 		}else if("React".equals(criteriaValue)) {
 			indexName = "GSI-search-index3";
 		}
-		List<UserJsonModel> lstUserJsonMdl = QueryUtil.querySpecExecution(keyExpression, indexName, valueMap, dynamoDB);
+		List<UserJsonModel> lstUserJsonMdl = QueryUtil.querySpecExecution(keyExpression, indexName, valueMap, dynamoDB,pageNo);
 		return lstUserJsonMdl;
 	}
 

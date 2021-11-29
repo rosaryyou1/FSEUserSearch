@@ -25,13 +25,25 @@ public class UserSearchController {
 
 	//@Autowired
 	MemcachedClient memcachedClient;
-	
-	@GetMapping("/{criteria}/{criteriavalue}")
-	public String getUser(@PathVariable String criteria,@PathVariable String criteriavalue) {
+
+	@GetMapping("/{criteria}/{criteriavalue}/{pageNo}")
+	public String getUser(@PathVariable String criteria,@PathVariable String criteriavalue,@PathVariable int pageNo) {
 		List<UserJsonModel> users;
 		String result = null;
 		try {
-			users = userService.findByNameAndAssociateIdAndSkill(criteria, criteriavalue);
+			String cacheKey = criteriavalue+pageNo;
+			if(memcachedClient!=null && memcachedClient.get(cacheKey)!=null) {
+				users = (List<UserJsonModel>)memcachedClient.get(cacheKey);
+				System.out.println("from cache>>>"+users.get(0).getAssociateId());
+			}else {
+				users = userService.findByNameAndAssociateIdAndSkill(criteria, criteriavalue,pageNo);
+				if(memcachedClient!=null && memcachedClient.get(cacheKey)!=null) {
+					memcachedClient.replace(cacheKey, 3600, users);
+				}else if(memcachedClient!=null){
+					memcachedClient.add(cacheKey, 3600, users);
+				}
+			}
+
 			ObjectMapper obj = new ObjectMapper();
 			result = obj.writeValueAsString(users);
 		} catch (Exception e) {
@@ -40,5 +52,15 @@ public class UserSearchController {
 		return result;
 
 	}
-	
+
+	@GetMapping("/cache1")
+	public void getCache() {
+		memcachedClient.add("a", 86400, "test");
+		memcachedClient.add("b", 86400, "test1");
+		System.out.println(memcachedClient.get("a"));
+		System.out.println(memcachedClient.get("b"));
+
+	}
+
+
 }

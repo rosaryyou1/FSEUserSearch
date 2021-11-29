@@ -60,7 +60,7 @@ public class UserService {
 	}*/
 
 
-	public  List<UserJsonModel> findByNameAndAssociateIdAndSkill(String criteriaName, String criteriaValue) throws ValidationException{
+	public  List<UserJsonModel> findByNameAndAssociateIdAndSkill(String criteriaName, String criteriaValue,int pageNo) throws ValidationException{
 		//Criteria criteria = new Criteria(criteriaName,criteriaValue);
 		/*try {
 			this.publishCriteria(criteria);
@@ -70,7 +70,7 @@ public class UserService {
 		ValidationUtil.validateCriteria(criteriaName,criteriaValue);
 		DynamoDB dynamoDB = new DynamoDB(amzonDynamoDB);
 		CriteriaQueryExecutor criteriaQryExec = queryFactory.getCriteriaQueryExecutor(criteriaName, criteriaValue);
-		List<UserJsonModel> lstUserModel =criteriaQryExec.executeQuery(criteriaValue,dynamoDB);
+		List<UserJsonModel> lstUserModel =criteriaQryExec.executeQuery(criteriaValue,dynamoDB,pageNo);
 		return lstUserModel;
 	}
 

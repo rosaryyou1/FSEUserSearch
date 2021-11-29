@@ -95,7 +95,7 @@ public class UserMicroServiceAppConfiguration {
     	
     }
     
-  //  @Bean
+    //@Bean
     public MemcachedClient memcachedClient() throws IOException {
          MemcachedClient client;
 		try {

@@ -27,7 +27,7 @@ public class UserServiceTests {
 		List<UserJsonModel> lstMockUsrJsonModel;
 		try {
 			lstMockUsrJsonModel = 
-					userService.findByNameAndAssociateIdAndSkill("searchName", "CTS3574121-Cyril");
+					userService.findByNameAndAssociateIdAndSkill("searchName", "CTS3574121-Cyril",1);
 		} catch (ValidationException e) {
 			assertFalse(e.getMessage()!=null);
 		}
@@ -37,7 +37,7 @@ public class UserServiceTests {
 	public void testgetUserBySkill() {
 		List<UserJsonModel> lstMockUsrJsonModel;
 		try {
-			lstMockUsrJsonModel = userService.findByNameAndAssociateIdAndSkill("searchSkill", "Angular");
+			lstMockUsrJsonModel = userService.findByNameAndAssociateIdAndSkill("searchSkill", "Angular",1);
 		} catch (ValidationException e) {
 			assertFalse(e.getMessage()!=null);
 		}
@@ -49,7 +49,7 @@ public class UserServiceTests {
 		List<UserJsonModel> lstMockUsrJsonModel;
 		try {
 			lstMockUsrJsonModel = 
-					userService.findByNameAndAssociateIdAndSkill("searchName12", "CTS3574121-Cyril");
+					userService.findByNameAndAssociateIdAndSkill("searchName12", "CTS3574121-Cyril",1);
 		} catch (ValidationException e) {
 			// TODO Auto-generated catch block
 			assertTrue(e.getMessage()!=null);
@@ -61,7 +61,7 @@ public class UserServiceTests {
 		List<UserJsonModel> lstMockUsrJsonModel;
 		try {
 			lstMockUsrJsonModel = 
-					userService.findByNameAndAssociateIdAndSkill("searchSkill", "Japanese");
+					userService.findByNameAndAssociateIdAndSkill("searchSkill", "Japanese",1);
 		} catch (ValidationException e) {
 			// TODO Auto-generated catch block
 			assertTrue(e.getMessage()!=null);

@@ -1,11 +1,13 @@
 package com.cognizant.aws.fse.usersearch.json.domain;
 
+import java.io.Serializable;
 import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 @JsonIgnoreProperties(ignoreUnknown =  true)
-public class UserJsonModel {
+public class UserJsonModel implements Serializable {
+	private static final long serialVersionUID = 9336L;
 	@JsonProperty("UserId")
 	String userId;
 	@JsonProperty("AssociateName")

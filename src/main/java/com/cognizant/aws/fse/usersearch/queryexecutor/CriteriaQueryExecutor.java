@@ -7,6 +7,6 @@ import com.cognizant.aws.fse.usersearch.json.domain.UserJsonModel;
 
 public interface CriteriaQueryExecutor {
 	
-	List<UserJsonModel>  executeQuery(String criteriaValue,DynamoDB dynamoDB);
+	List<UserJsonModel>  executeQuery(String criteriaValue,DynamoDB dynamoDB,int pageNo);
 
 }
